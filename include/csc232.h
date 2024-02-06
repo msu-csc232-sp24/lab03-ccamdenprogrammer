@@ -123,7 +123,6 @@ class Dog
     };
     
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
     GreatDaehn::GreatDaehn(const std::string& dogs_name) : name{dogs_name}
     {
         std::cout << "A GreatDaehn named" << name << "was just created. " << std::endl;
