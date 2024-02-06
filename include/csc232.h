@@ -140,6 +140,7 @@ class Dog
     std::cout << "A GreatDaehn named " << name << " just sat down." << std::endl;
     }
     
+    
 #endif // FINISHED_PART_2
 
     // DO NOT Modify anything below this line
