@@ -18,9 +18,9 @@
 #define TRUE 1
 #define EXECUTE_BLOCK FALSE
 
-#define FINISHED_PART_1 FALSE
-#define FINISHED_PART_2 FALSE
-#define FINISHED_PART_3 FALSE
+#define FINISHED_PART_1 TRUE
+#define FINISHED_PART_2 TRUE
+#define FINISHED_PART_3 TRUE
 
 #include <algorithm>
 #include <cassert>
@@ -61,19 +61,85 @@ using std::setw;
 namespace csc232
 {
 #if FINISHED_PART_1
-    // TODO: Task 1 - Declare your Dog interface below (but before the #endif)
 
+//declaring the dog interface.
+class Dog
+{
+    public: 
+//speak and sit methods followed by default constructor.
+    virtual std::string speak() const = 0;
+    virtual void sit() const = 0;
+    virtual ~Dog() = default;
+};
 #endif // FINISHED_PART_1
 
 #if FINISHED_PART_2
-    // TODO: Task 2.a.1 - Declare your Yorkie class for Task 2a below
+    //yorkie class referencing the dog interface.
+    class Yorkie : public Dog
+    {
+        public:
+        //public yorkie methods
+        Yorkie(const std::string& dogs_name);
+        std::string speak() const override;
+        void sit() const override;
 
-    // TODO: Task 2.a.2 - Add your Yorkie definition below
+        private:
+        //the private string that protects the name(s) of the dog(s)
+        std::string name;
+    };
+ 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    // TODO: Task 2.b.1 - Declare your GreatDaehn class for Task 2b below
+    //the following are the actual definitions of the methods for both yorkie and great daehn.
+    Yorkie::Yorkie(const std::string& dogs_name) : name{ dogs_name }
+    {
+    std::cout << "A Yorkie named" << name << " was just created." << std::endl;
+    }
 
-    // TODO: Task 2.b.2 - Add your GreatDaehn definition below (before the #endif)
+    std::string Yorkie::speak() const
+    {
+    std::string response{ "DID YOU SAY SPEAK?" };
+    //This return was needed in order to pass the tests as the method needed to return something. The same goes for great daehn.
+    return response;
+    }
 
+    void Yorkie::sit() const
+    {
+    std::cout << "A Yorkie named " << name << " just sat down." << std::endl;
+    }
+   
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    //This is essentially a copy of yorkie but modified for the great daehn.
+    class GreatDaehn : public Dog
+    {
+        public: 
+        GreatDaehn(const std::string& dogs_name);
+        std::string speak() const override;
+        void sit() const override;
+
+        private:
+        std::string name;
+    };
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    GreatDaehn::GreatDaehn(const std::string& dogs_name) : name{dogs_name}
+    {
+        std::cout << "A GreatDaehn named" << name << "was just created. " << std::endl;
+    }
+
+    std::string GreatDaehn::speak() const
+    {
+        std::string response{ "What?" };
+        return response;
+    }
+
+    void GreatDaehn::sit() const
+    {
+    std::cout << "A GreatDaehn named " << name << " just sat down." << std::endl;
+    }
+    
+    
 #endif // FINISHED_PART_2
 
     // DO NOT Modify anything below this line
